@@ -14,7 +14,7 @@ const SearchParams = () => {
   const [pets, setPets] = useState([]);
   const [breeds] = useBreedList(animal);
   //*----------------------Use state hooks------------------------------------
-  const [theme] = useContext(ThemeContext);
+  const [theme, setTheme] = useContext(ThemeContext);
   //* ----------------------Use effect hooks------------------------------------
   //only when the dependencies change, the effect is run
   //empty array means that the effect is run only once
@@ -78,6 +78,18 @@ const SearchParams = () => {
                   {breed}
                 </option>
               ))}
+          </select>
+        </label>
+        <label htmlFor="theme">
+          Theme
+          <select
+            id="theme"
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+          >
+            <option value="green">green</option>
+            <option value="brown">brown</option>
+            <option value="pink">pink</option>
           </select>
         </label>
         <button style={{ backgroundColor: theme }}>Submit</button>
